@@ -26,6 +26,9 @@
 - Fetch Data for trailer video
 - Update store with trailer video data
 - Embedded Youtube video and make it autoplay and mute
+- Custom hooks for top-rated, popular, upcoming movies
+- Update store with new movie category lists and populate
+- Build Movie List and Movie Card
 
 # Features
 - Login/Sign Up

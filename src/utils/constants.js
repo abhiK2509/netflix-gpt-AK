@@ -12,3 +12,4 @@ export const API_OPTIONS = {
 };
 export const TMDB_URL_PREFIX = "https://api.themoviedb.org/3/movie/";
 export const YOUTUBE_EMBED_URL_PREFIX = "https://www.youtube.com/embed/";
+export const TMDB_IMAGE_URL_PREFIX = "https://image.tmdb.org/t/p/";
