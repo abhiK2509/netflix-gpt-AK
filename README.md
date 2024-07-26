@@ -30,9 +30,11 @@
 - Update store with new movie category lists and populate
 - Build Movie List and Movie Card
 - Multi-language support
-- GPT Search feature - Integrate GPT APIs(get open)
+- GPT Search feature - Integrate openAI
     - GPT Search Page
     - GPT Search Bar
+- Added env file to keep keys
+- API request optimization
 
 # Features
 - Login/Sign Up
