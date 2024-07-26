@@ -29,6 +29,10 @@
 - Custom hooks for top-rated, popular, upcoming movies
 - Update store with new movie category lists and populate
 - Build Movie List and Movie Card
+- Multi-language support
+- GPT Search feature - Integrate GPT APIs(get open)
+    - GPT Search Page
+    - GPT Search Bar
 
 # Features
 - Login/Sign Up

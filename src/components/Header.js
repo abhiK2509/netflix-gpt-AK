@@ -4,51 +4,93 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../redux/userSlice";
-import { LOGO } from "../utils/constants";
+import { LANGUAGE_LIST, LOGO } from "../utils/constants";
+import { toggleGptSearchView } from "../redux/gptSlice";
+import { changeLanguage } from "../redux/configSlice";
 
 const Header = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const user = useSelector(store => store.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-    useEffect(() => {
-        const authStateChange = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const { uid, email, displayName, photoURL } = user;
-                dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-                navigate("/browse");
-            } else {
-                dispatch(removeUser());
-                navigate("/");
-            }
-        });
+  useEffect(() => {
+    const authStateChange = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
 
-        return () => authStateChange();
-    }, []);
+    return () => authStateChange();
+  }, []);
 
-    const handleSignOut = () => {
-        signOut(auth)
-            .then(() => { })
-            .catch((error) => {
-                navigate("/error");
-            });
-    };
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        navigate("/error");
+      });
+  };
 
-    return (
-        <div className="absolute w-screen px-36 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-            <img
-                className="w-44"
-                src={LOGO}
-                alt="logo"
-            />
-            {user && <div className="flex p-4">
-                <img
-                    className="w-12 h-12 rounded-full"
-                    alt="userIcon" src={user?.photoURL} />
-                <button className="font-bold text-white" onClick={() => handleSignOut()}>(Sign Out)</button>
-            </div>}
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageSelection = (event) => {
+    event.preventDefault();
+    dispatch(changeLanguage(event.target.value));
+  };
+
+  return (
+    <div className="absolute w-screen px-36 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
+      <img className="w-44" src={LOGO} alt="logo" />
+      {user && (
+        <div className="flex p-4">
+          {showGptSearch && (
+            <select
+              className="p-2 m-2 bg-gray-900 text-white"
+              onChange={(e) => handleLanguageSelection(e)}
+            >
+              {LANGUAGE_LIST.map((lang) => (
+                <option key={lang.value} value={lang.value}>
+                  {lang.label}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+            onClick={() => handleGptSearchClick()}
+          >
+            {!showGptSearch ? "GPT Search" : "Homepage"}
+          </button>
+          <img
+            className="w-12 h-12 rounded-full"
+            alt="userIcon"
+            src={user?.photoURL}
+          />
+          <button
+            className="font-bold text-white"
+            onClick={() => handleSignOut()}
+          >
+            (Sign Out)
+          </button>
         </div>
-    )
+      )}
+    </div>
+  );
 };
 
 export default Header;

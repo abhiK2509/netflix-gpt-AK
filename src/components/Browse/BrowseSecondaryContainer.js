@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MovieList from "./MovieList";
+import MovieList from "./Movies/MovieList";
 
 const BrowseSecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);

@@ -1,5 +1,5 @@
 import React from "react";
-import { TMDB_IMAGE_URL_PREFIX } from "../utils/constants";
+import { TMDB_IMAGE_URL_PREFIX } from "../../../utils/constants";
 
 const MovieCard = ({ poster_path }) => {
   return (
