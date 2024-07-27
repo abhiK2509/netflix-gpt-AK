@@ -5,7 +5,7 @@ const MovieCard = ({ poster_path }) => {
   if (!poster_path) return;
 
   return (
-    <div className="w-48 pr-4">
+    <div className="w-36 md:w-48 pr-4">
       <img src={`${TMDB_IMAGE_URL_PREFIX}w500/${poster_path}`} />
     </div>
   );

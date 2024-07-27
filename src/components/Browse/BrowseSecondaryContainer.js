@@ -6,7 +6,7 @@ const BrowseSecondaryContainer = () => {
 
   return (
     <div className="bg-black">
-      <div className="-mt-56 pl-28 relative z-20">
+      <div className="mt-0 md:-mt-56 pl-2 relative z-20">
         <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
         <MovieList title={"Top Rated"} movies={movies.topRatedMovies} />
         <MovieList title={"Popular"} movies={movies.popularMovies} />

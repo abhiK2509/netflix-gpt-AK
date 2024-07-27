@@ -33,8 +33,10 @@
 - GPT Search feature - Integrate openAI
     - GPT Search Page
     - GPT Search Bar
+    - Movie suggestion list
 - Added env file to keep keys
-- API request optimization
+- API request optimization - Memoization
+- Responsive UI
 
 # Features
 - Login/Sign Up
