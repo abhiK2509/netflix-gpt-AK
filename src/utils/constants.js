@@ -9,7 +9,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      `Bearer ${process.env.REACT_APP_TMDB_KEY}`,
+      `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1Njc2ZjQ3NTVlM2ViNTRkNGMzYzNhMDQ2NzExMmMxMiIsIm5iZiI6MTcyMTg0NTU4NS43Njg4MzIsInN1YiI6IjY2YTE0NTk1NDE5NGY5YjNkN2RkNzk2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7Bsi1qnI2sjJLARaKmmMlH_UqlodIZ7xfQ4Ajacj7cQ`,
   },
 };
 export const TMDB_URL_PREFIX = "https://api.themoviedb.org/3/movie/";
